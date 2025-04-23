@@ -27,16 +27,60 @@
 
 
         {# Lien css de Bootstrap 5 #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-        {# Lien css de notre propre feuille de style #}
-        <link rel="stylesheet" href="/styles/app.css">
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </head>
     <body>
         {# Navbar #}
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{{path('app_visitor_welcome')}}">JD</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{path('app_visitor_welcome')}}">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Qui suis-je?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('app_visitor_blog')}}">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('app_visitor_contact')}}">Contact</a>
+                            </li>
+                            
+                            
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Connextion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Inscription</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
 
         {# Main #}
 
+        {% block main %}{% endblock %}
+
         {# Footer #}
+        <footer>
+            <span>Dwwm</span>
+        </footer>
 
         {# Scripts #}
     </body>
