@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+
+        {# Encodage standard des caractères pour le web #}
+        <meta charset="UTF-8">
+
+        {# Minimum de Responsive Design à toujours mettre en place #}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {# Le titre de la page #}
+        <title>Inscription</title>
+
+        {# La description de la page #}
+        <meta name="description" content="Inscrivez-vous pour lire, aimer et commenter des articles interessants">
+
+        {# Autorisation aux robots des moteurs de recherche d'indexer et de suivre la page #}
+        <meta name="robots" content="index, follow">
+
+        {# Les mots clés de la page #}
+        <meta name="keywords" content="Inscription, Blog, Jean-Dupont">
+
+        {# Google font #}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        {# Lien css de Bootstrap 5 #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {# Lien js de Bootstrap 5 #}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    {# Img #}
+                    <img src="/images/static/register/register.png" alt="Jean Dupont en train de faire son footing et qui vous invite à vous inscrire" class="img-fluid">
+                </div>
+                <div class="col-lg-5">
+                    {# Form #}
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
+
+                    <h1 class="my-3">Inscription</h1>
+
+                    {{ form_errors(registrationForm) }}
+
+                    {{ form_start(registrationForm) }}
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="registration_form_firstName">Prénom</label>
+                                {{form_widget(registrationForm.firstName, {'attr': {'class':'form-control', 'autofocus': 'autofocus'}})}}
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="registration_form_lastName">Nom</label>
+                                {{form_widget(registrationForm.lastName, {'attr': {'class':'form-control'}})}}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registration_form_email">Email</label>
+                            {{form_widget(registrationForm.email, {'attr': {'class':'form-control'}})}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="registration_form_password_first">Mot de passe</label>
+                            {{form_widget(registrationForm.password.first, {'attr': {'class':'form-control'}})}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="registration_form_password_second">Confirmation du mot de passe</label>
+                            {{form_widget(registrationForm.password.second, {'attr': {'class':'form-control'}})}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="registration_form_agreeTerms">
+                                {{form_widget(registrationForm.agreeTerms)}} Lire et accepter <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="">les conditions générales d'utilisation</a>
+                            </label>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Les conditions générales d'utilisation</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro assumenda ipsum voluptatem nobis necessitatibus? Nobis aliquam placeat ipsa, quis hic ratione autem nesciunt est, explicabo at id. Magnam, impedit dolor?
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro assumenda ipsum voluptatem nobis necessitatibus? Nobis aliquam placeat ipsa, quis hic ratione autem nesciunt est, explicabo at id. Magnam, impedit dolor?
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro assumenda ipsum voluptatem nobis necessitatibus? Nobis aliquam placeat ipsa, quis hic ratione autem nesciunt est, explicabo at id. Magnam, impedit dolor?
+                                        </p>
+                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input formnovalidate type="submit" class="btn btn-primary w-100" value="S'inscrire">
+                        </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
