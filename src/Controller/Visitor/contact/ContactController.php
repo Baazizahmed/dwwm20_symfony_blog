@@ -1,6 +1,7 @@
 <?php
+namespace App\Controller\Visitor\Contact;
 
-namespace App\Controller\Visitor\contact;
+
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

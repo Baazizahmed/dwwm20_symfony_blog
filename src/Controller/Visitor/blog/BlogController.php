@@ -1,6 +1,8 @@
 <?php
+namespace App\Controller\Visitor\Blog;
 
-namespace App\Controller\Visitor\blog;
+
+
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
